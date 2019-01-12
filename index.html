@@ -5,10 +5,7 @@
     height: 200px;
     border: 5px solid #CCC;
     border-radius: 10px;
-<<<<<<< HEAD
-    display: block;
-=======
->>>>>>> 56c34a37a45a26d04f1adeb4d8284f6a2413dd81
+
   }
 
   .ball {
@@ -171,7 +168,6 @@
 
 
 
-=======
 <div class="garden">
   <div class="ball"></div>
 </div>
@@ -179,7 +175,6 @@
 <pre class="output"></pre>
 
 <script type="text/javascript">
->>>>>>> 56c34a37a45a26d04f1adeb4d8284f6a2413dd81
   var ball   = document.querySelector('.ball');
   var garden = document.querySelector('.garden');
   var output = document.querySelector('.output');
@@ -199,11 +194,7 @@
     if (x >  90) { x =  90};
     if (x < -90) { x = -90};
 
-<<<<<<< HEAD
-    // To make computation easier we shift the range of
-=======
-    // To make computation easier we shift the range of 
->>>>>>> 56c34a37a45a26d04f1adeb4d8284f6a2413dd81
+
     // x and y to [0,180]
     x += 90;
     y += 90;
@@ -212,7 +203,7 @@
     // It center the positioning point to the center of the ball
     ball.style.top  = (maxX*x/180 - 10) + "px";
     ball.style.left = (maxY*y/180 - 10) + "px";
-<<<<<<< HEAD
+
     oscillators.forEach((osc, i) => {
       osc.frequency.rampTo(maxY*y/180 - 10);
     });
@@ -222,10 +213,5 @@
   window.addEventListener('deviceorientation', handleOrientation);
 </script>
 </body>
-=======
-  }
 
-  window.addEventListener('deviceorientation', handleOrientation);
-</script>
 
->>>>>>> 56c34a37a45a26d04f1adeb4d8284f6a2413dd81
