@@ -103,8 +103,12 @@
         }
     };
     xhr.send(JSON.stringify({
-        x: 'Hello'
+        x: 'Hello',
+        b: "something",
+        c: "else"
     }));
+
+    console.log("Sent request");
   }
 
   let intervalID = window.setInterval(sendInput, 500);

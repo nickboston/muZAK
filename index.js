@@ -5,9 +5,19 @@ const path = require('path');
 let x;
 
 http.createServer(function (request, response) {
+
+    let body = [];
+    request.on('error', (err) => {
+      console.error(err);
+    }).on('data', (chunk) => {
+      body.push(chunk);
+    }).on('end', () => {
+      body = Buffer.concat(body).toString();
+      // At this point, we have the headers, method, url and body, and can now
+      // do whatever we need to in order to respond to this request.
+    });
     if (request.url == "/input"){
-        x = request.body.x;
-        console.log(x);
+        console.log(request);
     }
     else {
         console.log('request ', request.url);
