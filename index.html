@@ -20,9 +20,13 @@
 
 <div class="garden">
   <div class="ball"></div>
+  <button id="btn">click me please work uwu</button>
 </div>
 
 <pre class="output"></pre>
+
+<script src='tone.js'></script>
+<script src='tonejs-ui.js'></script>
 
 <script type="text/javascript">
   var ball   = document.querySelector('.ball');
@@ -31,6 +35,33 @@
 
   var maxX = garden.clientWidth  - ball.clientWidth;
   var maxY = garden.clientHeight - ball.clientHeight;
+
+  var oscillators = [];
+
+		var bassFreq = 32;
+
+		for (var i = 0; i < 8; i++){
+			oscillators.push(new Tone.Oscillator({
+				"frequency" : bassFreq * i,
+				"type" : "sawtooth10",
+				"volume" : -Infinity,
+				"detune" : Math.random() * 30 - 15,
+			}).toMaster());
+		}
+
+		//bind the interface
+		document.querySelector("#btn").addEventListener("click", e => {
+			oscillators.forEach(o => {
+				if (e.detail){
+					o.start();
+					o.volume.rampTo(0, 1);
+				} else {
+					o.stop("+1.2");
+					o.volume.rampTo(-Infinity, 1);
+				}
+			});
+		});
+
 
   function handleOrientation(event) {
     var x = event.beta;  // In degree in the range [-180,180]
@@ -44,7 +75,7 @@
     if (x >  90) { x =  90};
     if (x < -90) { x = -90};
 
-    // To make computation easier we shift the range of 
+    // To make computation easier we shift the range of
     // x and y to [0,180]
     x += 90;
     y += 90;
@@ -53,8 +84,11 @@
     // It center the positioning point to the center of the ball
     ball.style.top  = (maxX*x/180 - 10) + "px";
     ball.style.left = (maxY*y/180 - 10) + "px";
+    oscillators.forEach((osc, i) => {
+      osc.frequency.rampTo(maxY*y/180 - 10);
+    });
+
   }
 
   window.addEventListener('deviceorientation', handleOrientation);
 </script>
-
