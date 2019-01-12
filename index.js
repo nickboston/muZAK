@@ -1,10 +1,10 @@
-const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
 let x;
 
-http.createServer(function (request, response) {
+https.createServer(function (request, response) {
     if (request.url == "/input"){
         let body = '';
         request.on('data', chunk => {
