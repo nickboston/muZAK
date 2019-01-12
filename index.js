@@ -5,7 +5,7 @@ const path = require('path');
 let x;
 
 http.createServer(function (request, response) {
-    response.writeHead(200, {'Content-Type':'text/plain'});
+    response.writeHead(200, {'Content-Length': 1000,'Content-Type':'text/plain'});
     response.write("Hello");
     response.end();
     if (request.url == "/input"){
