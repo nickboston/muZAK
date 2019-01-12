@@ -91,4 +91,22 @@
   }
 
   window.addEventListener('deviceorientation', handleOrientation);
+
+  function sendInput(){
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/input');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            let info  = JSON.parse(xhr.responseText);
+        }
+    };
+    xhr.send(JSON.stringify({
+        x: 'Hello'
+    }));
+  }
+
+  let intervalID = window.setInterval(sendInput, 500);
+
 </script>
