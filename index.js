@@ -14,11 +14,11 @@ http.createServer(function (request, response) {
             console.log(body);
             x = body;
             process.stdout.write(body);
-            response.json({output: x});
+            response.end('ok');
         });
     }
     else if (request.url == "/output"){
-        response.end(x);
+        response.json({output: x});
     }
     else {
         console.log('request ', request.url);
