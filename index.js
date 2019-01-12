@@ -18,7 +18,7 @@ http.createServer(function (request, response) {
         });
     }
     else if (request.url == "/output"){
-        response.send(JSON.stringify({output: "Hello"}));
+        response.send('success');
     }
     else {
         console.log('request ', request.url);
