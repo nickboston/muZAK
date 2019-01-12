@@ -5,6 +5,7 @@
     height: 200px;
     border: 5px solid #CCC;
     border-radius: 10px;
+    display: block;
   }
 
   .ball {
@@ -18,13 +19,154 @@
   }
 </style>
 
-<div class="garden">
-  <div class="ball"></div>
-</div>
 
-<pre class="output"></pre>
+<head>
+  <script src='tone.js'></script>
+  <script src='tonejs-ui.js'></script>
+</head>
+<!-- <body>
+	<script>
 
-<script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function() {
+      var fmSynth = new Tone.FMSynth().toMaster();
+      fmSynth.triggerAttackRelease("C5", "4n");
+    })
+
+	</script>
+</body> -->
+<body>
+	<style>
+		tone-slider {
+			width: 100%;
+			margin-top: 10px;
+		}
+	</style>
+  <div class="garden">
+    <div class="ball"></div>
+  </div>
+  <button id="btn">start tone</button>
+  <button id="change">do something></button>
+
+  <pre class="output"></pre>
+	<tone-example>
+
+		<tone-content>
+			<tone-play-toggle></tone-play-toggle>
+			<tone-slider bare min="0.5" max="2" value="1"></tone-slider>
+		</tone-content>
+	</tone-example>
+
+	<script type="text/javascript">
+
+  function handleOrientation(event) {
+    var x = event.beta;  // In degree in the range [-180,180]
+    var y = event.gamma; // In degree in the range [-90,90]
+
+
+    // Because we don't want to have the device upside down
+    // We constrain the x value to the range [-90,90]
+    if (x >  90) { x =  90};
+    if (x < -90) { x = -90};
+
+    // To make computation easier we shift the range of
+    // x and y to [0,180]
+    x += 90;
+    y += 90;
+
+    // 10 is half the size of the ball
+    // It center the positioning point to the center of the ball
+
+  }
+
+  window.addEventListener('deviceorientation', handleOrientation);
+		var oscillators = [];
+
+		var bassFreq = 32;
+
+		for (var i = 0; i < 8; i++){
+			oscillators.push(new Tone.Oscillator({
+				"frequency" : bassFreq * i,
+				"type" : "sawtooth10",
+				"volume" : -Infinity,
+				"detune" : Math.random() * 30 - 15,
+			}).toMaster());
+		}
+
+		//bind the interface
+		document.querySelector("#btn").addEventListener("click", e => {
+			oscillators.forEach(o => {
+				if (e.detail){
+					o.start();
+					o.volume.rampTo(0, 1);
+				} else {
+					o.stop("+1.2");
+					o.volume.rampTo(-Infinity, 1);
+				}
+			});
+		});
+    var ball   = document.querySelector('.ball');
+    dragElement(ball);
+    function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  var x;
+  var y;
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    // oscillators.forEach((osc, i) => {
+    //   osc.frequency.rampTo(elmnt.offsetTop - pos2);
+    // });
+
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+
+  }
+}
+  var rect = element.getBoundingClientRect();
+
+		// document.querySelector(".ball").addEventListener("change", e => {
+    //   console.log("yo");
+		// 	oscillators.forEach((osc, i) => {
+		// 		osc.frequency.rampTo(x);
+		// 	});
+		// });
+
+
+
+
   var ball   = document.querySelector('.ball');
   var garden = document.querySelector('.garden');
   var output = document.querySelector('.output');
@@ -44,7 +186,7 @@
     if (x >  90) { x =  90};
     if (x < -90) { x = -90};
 
-    // To make computation easier we shift the range of 
+    // To make computation easier we shift the range of
     // x and y to [0,180]
     x += 90;
     y += 90;
@@ -53,8 +195,12 @@
     // It center the positioning point to the center of the ball
     ball.style.top  = (maxX*x/180 - 10) + "px";
     ball.style.left = (maxY*y/180 - 10) + "px";
-  }
+    oscillators.forEach((osc, i) => {
+      osc.frequency.rampTo(maxY*y/180 - 10);
+    });
+
+  };
 
   window.addEventListener('deviceorientation', handleOrientation);
 </script>
-
+</body>
