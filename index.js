@@ -12,9 +12,9 @@ http.createServer(function (request, response) {
     response.setHeader('Access-Control-Request-Method', '*');
     response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
     response.setHeader('Access-Control-Allow-Headers', '*');
-    if ( req.method === 'OPTIONS' ) {
-        res.writeHead(200);
-        res.end();
+    if ( request.method === 'OPTIONS' ) {
+        response.writeHead(200);
+        response.end();
         return;
     }
     else if (request.url == "/input"){
