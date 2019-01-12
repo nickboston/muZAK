@@ -2865,7 +2865,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				}
 
 				#container {
-					position: absolute;
+					position: relative;
 					top: 0px;
 					left: 0px;
 					width: 100%;
