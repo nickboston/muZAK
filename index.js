@@ -12,9 +12,13 @@ http.createServer(function (request, response) {
         });
         request.on('end', () => {
             console.log(body);
+            x = body;
             process.stdout.write(body);
             response.end('ok');
         });
+    }
+    else if (request.url == "/output"){
+        response.end(x);
     }
     else {
         console.log('request ', request.url);
