@@ -31,7 +31,6 @@ http.createServer(function (request, response) {
     }
     else if (request.url == "/output"){
         response.writeHead(200, {'Content-Type':'application/json'});
-        x = parseFloat(x.slice(2));
         response.write(JSON.stringify({output:x}));
         response.end();
     }
