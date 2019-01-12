@@ -18,7 +18,7 @@ http.createServer(function (request, response) {
         });
     }
     else if (request.url == "/output"){
-        response.write({output: "Hello"});
+        response.write("Hello");
         response.end();
     }
     else {
