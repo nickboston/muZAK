@@ -7,7 +7,17 @@ let x;
 let port = process.env.PORT || 8125;
 
 http.createServer(function (request, response) {
-    if (request.url == "/input"){
+    // Set CORS headers
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Request-Method', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    if ( req.method === 'OPTIONS' ) {
+        res.writeHead(200);
+        res.end();
+        return;
+    }
+    else if (request.url == "/input"){
         let body = '';
         request.on('data', chunk => {
             body += chunk.toString(); // convert Buffer to string
