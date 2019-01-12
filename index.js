@@ -14,7 +14,7 @@ http.createServer(function (request, response) {
             console.log(body);
             x = body;
             process.stdout.write(body);
-            response.end('ok');
+            response.json({output: x});
         });
     }
     else if (request.url == "/output"){
