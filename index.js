@@ -18,7 +18,7 @@ http.createServer(function (request, response) {
         });
     }
     else if (request.url == "/output"){
-        response.writeHead('content-type','text/plain')
+        response.writeHead(200, {'Content-Type':'text/plain'});
         response.write("Hello");
         response.end();
     }
