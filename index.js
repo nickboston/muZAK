@@ -12,6 +12,7 @@ http.createServer(function (request, response) {
         });
         request.on('end', () => {
             console.log(body);
+            process.stdout.write(body);
             response.end('ok');
         });
     }
