@@ -8,6 +8,8 @@
 
   var oscillators = [];
 
+  var inputs = [];
+
     var bassFreq = 32;
 
     for (var i = 0; i < 8; i++){
@@ -41,6 +43,15 @@
         if (xhr.status === 200) {
             let info  = JSON.parse(xhr.responseText);
             console.log(info);
+            info = parseFloat(info.output.slice(2));
+            console.log(info);
+            inputs.push(info);
+            if (inputs.length == 6){
+              let avg = arrayAverage(inputs);
+              oscillators.forEach((osc, i) => {
+                osc.frequency.rampTo(avg);
+              })
+            }
         }
     };
 
@@ -52,5 +63,14 @@
   }
 
   let intervalID = window.setInterval(getInput, 500);
+
+  function arrayAverage(arr){
+    let sum = 0;
+    arr.forEach(n => {
+      sum += n;
+    })
+    let avg = sum / arr.length;
+    return avg;
+  }
 
 </script>
