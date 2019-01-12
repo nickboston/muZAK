@@ -4,6 +4,8 @@ const path = require('path');
 
 let x;
 
+let port = process.env.PORT || 8125;
+
 https.createServer(function (request, response) {
     if (request.url == "/input"){
         let body = '';
@@ -72,5 +74,5 @@ https.createServer(function (request, response) {
     }
     
 
-}).listen(8125);
+}).listen(port);
 console.log('Server running at http://127.0.0.1:8125/');
