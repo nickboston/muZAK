@@ -93,7 +93,7 @@
     oscillators.forEach((osc, i) => {
       osc.frequency.rampTo(maxY*y/180 - 10);
     });
-    data = maxY*y/180 - 10;
+    data = [maxY*y/180 - 10, maxX*x/180 - 10];
 
   }
 
@@ -110,7 +110,7 @@
         }
     };
 
-    xhr.send("x=" + data);
+    xhr.send("x=" + data.toString);
 
     console.log("Sent request");
   }

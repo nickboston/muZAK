@@ -43,16 +43,16 @@
         if (xhr.status === 200) {
             let info  = JSON.parse(xhr.responseText);
             console.log(info);
-            info = parseFloat(info.output.slice(2));
-            console.log(info);
-            inputs.push(info);
-            if (inputs.length == 6){
-              let avg = arrayAverage(inputs);
-              oscillators.forEach((osc, i) => {
-                osc.frequency.rampTo(avg);
-              })
-              inputs = [];
-            }
+            // info = parseFloat(info.output.slice(2));
+            // console.log(info);
+            // inputs.push(info);
+            // if (inputs.length == 6){
+            //   let avg = arrayAverage(inputs);
+            //   oscillators.forEach((osc, i) => {
+            //     osc.frequency.rampTo(avg);
+            //   })
+            //   inputs = [];
+            // }
         }
     };
 
