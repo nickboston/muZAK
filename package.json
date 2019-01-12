@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/nickboston/muZAK/issues"
   },
-  "homepage": "https://github.com/nickboston/muZAK#readme"
+  "homepage": "https://github.com/nickboston/muZAK#readme",
+  "dependencies": {}
 }
