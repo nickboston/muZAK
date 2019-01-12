@@ -286,9 +286,9 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				}
 
 			</style>
-			${this.omni?i.b`<tone-select 
+			${this.omni?i.b`<tone-select
 				@change=${t=>this.sourceType=t.detail}
-				slot="top" 
+				slot="top"
 				attribute="sourceType"
 				id="sourceType">
 				<option value="oscillator">basic</option>
@@ -300,91 +300,91 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 			</tone-select>`:i.b``}
 			<div id="attributeContainer">
 
-				<tone-oscillator-type 
+				<tone-oscillator-type
 					?display=${"pulse"!==this.sourceType&&"pwm"!==this.sourceType}
 					label="${"fm"===this.sourceType||"am"===this.sourceType?"Carrier Type":"Type"}"
 					attribute="baseType">
 				</tone-oscillator-type>
-				<tone-multislider 
+				<tone-multislider
 					?display=${"pulse"!==this.sourceType&&"pwm"!==this.sourceType}
 					length="32"
 					label="Partials"
 					attribute="partials">
 				</tone-multislider>
-				<tone-slider 
+				<tone-slider
 					?display=${"pulse"!==this.sourceType&&"pwm"!==this.sourceType}
 					attribute="partialCount"
-					min="0" 
-					max="32" 
-					value="0" 
+					min="0"
+					max="32"
+					value="0"
 					integer
 					label="Partial Count">
 				</tone-slider>
 
-				<tone-oscillator-type 
+				<tone-oscillator-type
 					?display=${"fm"===this.sourceType||"am"===this.sourceType}
 					nocustom
 					label="Modulator Type"
 					attribute="modulationType">
 				</tone-oscillator-type>
-				<tone-slider 
+				<tone-slider
 					?display=${"fm"===this.sourceType}
 					attribute="modulationIndex"
-					min="0.1" 
-					max="20" 
-					exp="1.5" 
+					min="0.1"
+					max="20"
+					exp="1.5"
 					value="2"
 					label="Modulation Index">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					?display=${"fm"===this.sourceType||"am"===this.sourceType}
 					attribute="harmonicity"
-					min="0.25" 
-					max="5" 
+					min="0.25"
+					max="5"
 					value="2"
 					label="Harmonicity">
 				</tone-slider>
 
-				<tone-slider 
+				<tone-slider
 					?display=${"fat"===this.sourceType}
 					attribute="spread"
-					min="2" 
-					max="100" 
-					value="20" 
+					min="2"
+					max="100"
+					value="20"
 					units="cents"
 					label="Spread">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					?display=${"fat"===this.sourceType}
 					default="0"
 					attribute="count"
 					integer
 					value="2"
-					min="1" 
-					max="10" 
+					min="1"
+					max="10"
 					label="Count">
 				</tone-slider>
 
-				<tone-slider 
+				<tone-slider
 					?display=${"pulse"===this.sourceType}
 					default="0"
 					attribute="width"
-					min="0" 
-					max="1" 
-					value="0" 
+					min="0"
+					max="1"
+					value="0"
 					label="Width">
-				</tone-slider>	
-				
-				<tone-slider 
+				</tone-slider>
+
+				<tone-slider
 					?display=${"pwm"===this.sourceType}
 					default="0"
 					attribute="modulationFrequency"
-					min="0.1" 
-					max="10" 
-					value="0.5" 
+					min="0.1"
+					max="10"
+					value="0.5"
 					units="hz"
 					label="Modulation Frequency">
-				</tone-slider>		
+				</tone-slider>
 			</div>
 		`}render(){return i.b`
 			<style>
@@ -411,11 +411,11 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 			<tone-rack label="${this.label}" ?collapsed=${this.collapsed}>
 				<tone-viz-oscillator slot="top" class="viz"></tone-viz-oscillator>
 				${this.frequency?i.b`
-					<tone-slider 
+					<tone-slider
 						attribute="frequency"
-						min="20" 
-						max="10000" 
-						value="440" 
+						min="20"
+						max="10000"
+						value="440"
 						exp="2"
 						units="hz"
 						label="frequency">
@@ -488,11 +488,11 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				#container.closed::slotted:not([top]){
 					display: none;
 				}
-				
+
 			</style>
 			<div id="container" class=${this.collapsed?"closed":"open"} ?square=${this.square}>
 				${this.incollapsable?i.b``:i.b`
-					<button 
+					<button
 						@keydown=${this._keydown.bind(this)}
 						@click=${()=>this.collapsed=!this.collapsed}
 						aria-label='collapse menu'
@@ -565,10 +565,10 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				<div id="check-container"
 					@click=${this._clicked.bind(this)}>
 					<div id="background"></div>
-					<button name="checkbox" 
+					<button name="checkbox"
 						?checked=${this.checked}
 						@click=${this._clicked.bind(this)}
-						aria-checked=${this.checked} 
+						aria-checked=${this.checked}
 						aria-role="checkbox"
 						id="thumb"></button>
 				<div>
@@ -623,7 +623,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="container">
-				<button 
+				<button
 					?disabled=${this.disabled}
 					?playing=${this.playing}
 					@click=${this._clicked.bind(this)}
@@ -699,12 +699,12 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				}
 
 			</style>
-			<tone-rack 
+			<tone-rack
 				@collapse=${t=>this.collapsed=t.detail}
 				?collapsed=${this.collapsed} label="${this.label}">
 				<tone-player-viz slot="top" class="viz" id="top" color="black"></tone-player-viz>
 				<tone-player-viz class="viz" id="bottom" color="white"></tone-player-viz>
-				<tone-slider 
+				<tone-slider
 					min="0.5"
 					max="2"
 					exp="2"
@@ -712,25 +712,25 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					label="Playback Rate"
 					attribute="playbackRate">
 				</tone-slider>
-				<tone-toggle 
+				<tone-toggle
 					label="Loop"
 					attribute="loop">
 				</tone-toggle>
-				<tone-slider 
+				<tone-slider
 					min="0"
 					value="0"
 					label="Loop Start"
 					.max=${this.duration}
 					attribute="loopStart">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					min="0"
 					value="0"
 					label="Loop End"
 					.max=${this.duration}
 					attribute="loopEnd">
 				</tone-slider>
-				<tone-toggle 
+				<tone-toggle
 					label="Reverse"
 					attribute="reverse">
 				</tone-toggle>
@@ -783,7 +783,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					<option value="brown">brown</option>
 					<option value="pink">pink</option>
 				</tone-select-attribute>
-				<tone-slider 
+				<tone-slider
 					min="0.1"
 					max="4"
 					exp="2"
@@ -866,7 +866,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="container">
-				<button 
+				<button
 					?disabled=${!this.supported}
 					id="mic" aria-label="microphone" aria-checked=${this.open}>
 					${this.open?O:P}
@@ -922,12 +922,12 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				}
 
 			</style>
-			<tone-rack 
+			<tone-rack
 				@collapse=${t=>this.collapsed=t.detail}
 				?collapsed=${this.collapsed} label="${this.label}">
 				<tone-player-viz slot="top" class="viz" id="top" color="black"></tone-player-viz>
 				<tone-player-viz class="viz" id="bottom" color="white"></tone-player-viz>
-				<tone-slider 
+				<tone-slider
 					min="0.5"
 					max="2"
 					exp="2"
@@ -935,7 +935,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					label="Playback Rate"
 					attribute="playbackRate">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					min="-1200"
 					max="1200"
 					default="0"
@@ -945,39 +945,39 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					units="cents"
 					attribute="detune">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					min="0.01"
 					max="0.5"
 					value="0.1"
 					label="Grain Size"
 					attribute="grainSize">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					min="0.01"
 					max="0.2"
 					value="0.1"
 					label="Overlap"
 					attribute="overlap">
 				</tone-slider>
-				<tone-toggle 
+				<tone-toggle
 					label="Loop"
 					attribute="loop">
 				</tone-toggle>
-				<tone-slider 
+				<tone-slider
 					min="0"
 					value="0"
 					label="Loop Start"
 					.max=${this.duration}
 					attribute="loopStart">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					min="0"
 					value="0"
 					label="Loop End"
 					.max=${this.duration}
 					attribute="loopEnd">
 				</tone-slider>
-				<tone-toggle 
+				<tone-toggle
 					label="Reverse"
 					attribute="reverse">
 				</tone-toggle>
@@ -1021,7 +1021,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				}
 			</style>
 			<label>${this.label}</label>
-			<div id="container" 
+			<div id="container"
 				@mousedown=${this.mousedown}
 				@mousemove=${this.mousedown}>
 				${t.map(t=>i.b`
@@ -1032,7 +1032,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 			</div>
 		`}});var R=n(138),$=n.n(R);customElements.define("tone-keyboard-note",class extends i.a{static get properties(){return{note:{type:Number},color:{type:String},activecolor:{type:String},active:{type:Boolean},velocity:{type:Number},touchid:{type:Number}}}fromMidi(t){return Tone.Midi(t).toNote()}constructor(){super(),this.color="#eee",this.activecolor="white",this.active=!1,this.touchid=-1}updated(t){if(t.has("active")){const t=this.active?"noteon":"noteoff";this.active||(this.touchid=-1),this.dispatchEvent(new CustomEvent(t,{detail:{name:this.fromMidi(this.note),midi:this.note,velocity:this.active?1:0},composed:!0,bubbles:!0}))}}mouseover(t){t.buttons&&(this.active=!0,this.shadowRoot.querySelector("button").focus())}keydown(t){k(),t.repeat||" "!==t.key&&"Enter"!==t.key||(this.active=!0)}keyup(t){" "!==t.key&&"Enter"!==t.key||(this.active=!1)}touchstart(t){t.preventDefault(),this.touchid=t.touches[0].identifier,this.active=!0}render(){const t=0!==this.note;return i.b`
 			<style>
-				
+
 				:host {
 					display: block;
 				}
@@ -1074,7 +1074,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 			</style>
 			<div id="container" ?show=${t}>
 				${t?i.b`
-					<button 
+					<button
 						?active=${this.active}
 						@mouseover=${this.mouseover.bind(this)}
 						@mouseleave=${()=>this.active=!1}
@@ -1287,7 +1287,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="container">
-				<button 
+				<button
 					?disabled=${this.disabled}
 					@click=${this._clicked.bind(this)}>
 					${this.label}
@@ -1373,7 +1373,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="container">
-				<button 
+				<button
 					?disabled=${this.disabled}
 					?triggered=${this.triggered}
 					@keydown=${this._keydown.bind(this)}
@@ -1386,7 +1386,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					<div id="ring">
 						<div id="circle"></div>
 					</div>
-					
+
 				</button>
 			</div>
 		`}});customElements.define("tone-step-sequencer",class extends i.a{static get properties(){return{label:{type:String},rows:{type:Number},columns:{type:Number},highlight:{type:Number}}}constructor(){super(),this.rows=4,this.columns=16,this.highlight=-1,this.values=[],this.adding=!1}get currentColumn(){return this.values[Math.clamp(this.highlight,0,this.columns-1)]}_mousedown(t,e,n){t.cancelable&&t.preventDefault(),this.adding=!this.values[e][n],this.values[e][n]=this.adding,this.requestUpdate()}_mousemove(t,e,n){if(t.cancelable&&t.preventDefault(),t.buttons)this.values[e][n]=this.adding,this.requestUpdate();else if(t.changedTouches){const{clientWidth:i,clientHeight:o}=this.shadowRoot.querySelector("#container"),{top:r,left:s}=this.getBoundingClientRect();Array.from(t.changedTouches).forEach(t=>{const a=(t.clientX-s)/i,l=(t.clientY-r)/o;e=Math.floor(a*this.columns),n=Math.floor(l*this.rows),this.values[e][n]=this.adding}),this.requestUpdate()}}updated(t){if(t.has("columns")||t.has("rows")){this.values=[];for(let t=0;t<this.columns;t++){const t=[];for(let e=0;e<this.rows;e++)t[e]=!1;this.values.push(t)}this.requestUpdate()}}render(){return i.b`
@@ -1439,12 +1439,12 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					<div class="column ${e===this.highlight?"highlight":""}">
 						${t.map((t,n)=>i.b`
 							<div
-								@mousemove=${t=>this._mousemove(t,e,n)} 
-								@touchmove=${t=>this._mousemove(t,e,n)} 
-								@mousedown=${t=>this._mousedown(t,e,n)} 
-								@touchstart=${t=>this._mousedown(t,e,n)} 
-								@touchend=${()=>this.adding=!1} 
-								@mouseup=${()=>this.adding=!1} 
+								@mousemove=${t=>this._mousemove(t,e,n)}
+								@touchmove=${t=>this._mousemove(t,e,n)}
+								@mousedown=${t=>this._mousedown(t,e,n)}
+								@touchstart=${t=>this._mousedown(t,e,n)}
+								@touchend=${()=>this.adding=!1}
+								@mouseup=${()=>this.adding=!1}
 								class="row ${t?"filled":""}"></div>
 						`)}
 					</div>
@@ -1498,7 +1498,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					pointer-events: none;
 				}
 			</style>
-			<div id="container" 
+			<div id="container"
 				@mouseup=${this._mouseup.bind(this)}
 				@touchend=${this._mouseup.bind(this)}
 				@mousedown=${this._mousedown.bind(this)}
@@ -1516,7 +1516,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				<option value="cosine">cosine</option>
 				<option value="sine">sine</option>
 			`),i.b`
-			<tone-select-attribute 
+			<tone-select-attribute
 				label=${this.label} attribute=${this.attribute}>
 				<option value="linear">linear</option>
 				<option value="exponential">exponential</option>
@@ -1552,29 +1552,29 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					margin-top: 5px;
 				}
 			</style>
-			<tone-rack 
+			<tone-rack
 				@collapse=${t=>this.collapsed=t.detail}
 				?collapsed=${this.collapsed} label="${this.label}">
 				<tone-envelope-viz class="viz" id="top" slot="top"></tone-envelope-viz>
 				<tone-envelope-viz class="viz" id="bottom" color="#eee"></tone-envelope-viz>
-				<tone-slider 
+				<tone-slider
 					attribute="attack"
-					min="0.01" 
-					max="2" 
+					min="0.01"
+					max="2"
 					exp="2"
-					value="0.01" 
+					value="0.01"
 					label="Attack">
 				</tone-slider>
 				<tone-envelope-curve
 					label="Attack Curve"
 					attribute="attackCurve"
 					></tone-envelope-curve>
-				<tone-slider 
+				<tone-slider
 					attribute="decay"
-					min="0.01" 
-					max="2" 
+					min="0.01"
+					max="2"
 					exp="2"
-					value="0.01" 
+					value="0.01"
 					label="Decay">
 				</tone-slider>
 				<tone-envelope-curve
@@ -1582,19 +1582,19 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					label="Decay Curve"
 					attribute="decayCurve"
 					></tone-envelope-curve>
-				<tone-slider 
+				<tone-slider
 					attribute="sustain"
-					min="0" 
-					max="1" 
-					value="0.01" 
+					min="0"
+					max="1"
+					value="0.01"
 					label="Sustain">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					attribute="release"
-					min="0.01" 
-					max="4" 
+					min="0.01"
+					max="4"
 					exp="2"
-					value="0.01" 
+					value="0.01"
 					label="Release">
 				</tone-slider>
 				<tone-envelope-curve
@@ -1604,20 +1604,20 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				${this.renderAttributes()}
 			</tone-rack>
 		`}}customElements.define("tone-envelope",L);customElements.define("tone-frequency-envelope",class extends L{renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				attribute="baseFrequency"
-				min="20" 
-				max="20000" 
+				min="20"
+				max="20000"
 				value="400"
 				units="hz"
 				exp="2"
 				label="Frequency">
 			</tone-slider>
-			<tone-slider 
+			<tone-slider
 				attribute="octaves"
-				min="-8" 
-				max="8" 
-				value="2" 
+				min="-8"
+				max="8"
+				value="2"
 				label="Octaves">
 			</tone-slider>
 		`}});customElements.define("tone-meter",class extends i.a{static get properties(){return{stereo:{type:Boolean},level:{type:Boolean},color:{type:String}}}constructor(){super(),this.color="#777"}bind(t){if(this.stereo,this.stereo){const e=new Tone.Split;t.connect(e),this._meters=[new Tone.Meter(.9),new Tone.Meter(.9)],e.left.connect(this._meters[0]),e.right.connect(this._meters[1])}else this._meters=[new Tone.Meter(.9)],t.connect(this._meters[0]);this._canvas=this.shadowRoot.querySelector("canvas"),this._canvas.width=2*this._canvas.clientWidth,this._canvas.height=2*this._canvas.clientHeight,this._context=this._canvas.getContext("2d"),this.loop(),window.addEventListener("resize",()=>{this._canvas.width=2*this._canvas.clientWidth,this._canvas.height=2*this._canvas.clientHeight})}loop(){requestAnimationFrame(this.loop.bind(this));const{width:t,height:e}=this._canvas,n=this._meters.map(t=>t.getLevel()),i=n.map(t=>Math.clamp(Math.scale(t,-100,6,0,e),4,e));this._context.clearRect(0,0,t,e);const o=t/this._meters.length;this._context.fillStyle=this.color;const r=this._meters.length>1?5:0;i.forEach((t,n)=>{this._context.fillRect(n*o+r*n,e-t,o-r,t)}),this.level&&Array.from(this.shadowRoot.querySelectorAll(".level")).forEach((t,e)=>{let i=n[e];i<-100&&(i=-1/0),t.textContent=i.toFixed(2)})}render(){let t=i.b``;return this.level&&(t=this.stereo?i.b`
@@ -1742,7 +1742,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 			`}return i.b``}});class H extends o.a{static get properties(){return{label:{type:String},presets:{type:String},nopresets:{type:Boolean},collapsed:{type:Boolean},effect:{type:Boolean},polyphonic:{type:Boolean}}}constructor(){super(),this.label="",this.effect=!1,this.polyphonic=!1}bind(t){this.shadowRoot.querySelector("tone-meter").bind(t);const e=this.shadowRoot.querySelector("tone-presets");e&&e.bind(t),this.polyphonic?t.voices.forEach(t=>super.bind(t)):super.bind(t)}renderAttributes(){return i.b``}render(){const t=i.b`
 			<div id="drywet" slot="top">
 				<label>Dry/Wet</label>
-				<tone-slider 
+				<tone-slider
 					label="Dry/Wet"
 					attribute="wet"
 					min="0"
@@ -1823,212 +1823,212 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				${this.nopresets?i.b``:i.b`<tone-presets presets=${this.presets}></tone-presets>`}
 			</tone-rack square>
 		`}}customElements.define("tone-instrument",H);const V=[{portamento:0,oscillator:{type:"fatsine4",spread:60,count:10},envelope:{attack:.4,decay:.01,sustain:1,attackCurve:"sine",releaseCurve:"sine",release:.4}},{portamento:0,oscillator:{type:"square4"},envelope:{attack:2,decay:1,sustain:.2,release:2}},{portamento:0,oscillator:{type:"pulse",width:.8},envelope:{attack:.01,decay:.05,sustain:.2,releaseCurve:"bounce",release:.4}},{portamento:.2,oscillator:{type:"sawtooth"},envelope:{attack:.03,decay:.1,sustain:.2,release:.02}},{portamento:.2,oscillator:{partials:[1,0,2,0,3]},envelope:{attack:.001,decay:1.2,sustain:0,release:1.2}},{portamento:.2,oscillator:{type:"fatcustom",partials:[.2,1,0,.5,.1],spread:40,count:3},envelope:{attack:.001,decay:1.6,sustain:0,release:1.6}},{portamento:0,oscillator:{type:"fatsawtooth",count:3,spread:30},envelope:{attack:.01,decay:.1,sustain:.5,release:.4,attackCurve:"exponential"}},{portamento:0,oscillator:{type:"sine"},envelope:{attack:.001,decay:.1,sustain:.1,release:1.2}}];customElements.define("tone-synth",class extends H{constructor(){super(),this.label="Synth",this.presets=JSON.stringify(V)}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Portamento"
 				attribute="portamento"
 				min="0"
 				max="0.3"
 				value="0"></tone-slider>
-			<tone-envelope 
+			<tone-envelope
 				component="envelope"
 				collapsed label="Envelope"></tone-envelope>
-			<tone-oscillator 
+			<tone-oscillator
 				omni
 				component="oscillator"
 				collapsed label="Oscillator"></tone-oscillator>
 		`}});const B=[{portamento:0,oscillator:{type:"square"},filter:{Q:6,type:"lowpass",rolloff:-24},envelope:{attack:.005,decay:.1,sustain:.9,release:1},filterEnvelope:{attack:.06,decay:.2,sustain:.5,release:2,baseFrequency:200,octaves:7,exponent:2}},{portamento:0,oscillator:{type:"sawtooth"},filter:{Q:2,type:"bandpass",rolloff:-24},envelope:{attack:.01,decay:.1,sustain:.2,release:.6},filterEnvelope:{attack:.02,decay:.4,sustain:1,release:.7,releaseCurve:"linear",baseFrequency:20,octaves:5}},{portamento:0,oscillator:{type:"fmsquare5",modulationType:"triangle",modulationIndex:2,harmonicity:.501},filter:{Q:1,type:"lowpass",rolloff:-24},envelope:{attack:.01,decay:.1,sustain:.4,release:2},filterEnvelope:{attack:.01,decay:.1,sustain:.8,release:1.5,baseFrequency:50,octaves:4.4}},{portamento:.08,oscillator:{type:"custom",partials:[2,1,3,2,.4]},filter:{Q:4,type:"lowpass",rolloff:-48},envelope:{attack:.04,decay:.06,sustain:.4,release:1},filterEnvelope:{attack:.01,decay:.1,sustain:.6,release:1.5,baseFrequency:50,octaves:3.4}},{portamento:.01,oscillator:{type:"sawtooth"},filter:{Q:2,type:"lowpass",rolloff:-24},envelope:{attack:.1,decay:.1,sustain:.6,release:.5},filterEnvelope:{attack:.05,decay:.8,sustain:.4,release:1.5,baseFrequency:2e3,octaves:1.5}},{portamento:0,oscillator:{type:"pwm",modulationFrequency:1},filter:{Q:6,rolloff:-24},envelope:{attack:.025,decay:.3,sustain:.9,release:2},filterEnvelope:{attack:.245,decay:.131,sustain:.5,release:2,baseFrequency:20,octaves:7.2,exponent:2}},{portamento:0,oscillator:{type:"sawtooth"},filter:{Q:3,type:"highpass",rolloff:-12},envelope:{attack:.01,decay:.3,sustain:0,release:.9},filterEnvelope:{attack:.01,decay:.1,sustain:0,release:.1,baseFrequency:800,octaves:-1.2}}];customElements.define("tone-mono-synth",class extends H{constructor(){super(),this.label="MonoSynth",this.presets=JSON.stringify(B)}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Portamento"
 				attribute="portamento"
 				min="0"
 				max="0.1"
 				value="0"></tone-slider>
-			<tone-envelope 
-				component="envelope" 
-				collapsed 
+			<tone-envelope
+				component="envelope"
+				collapsed
 				label="Envelope"></tone-envelope>
-			<tone-oscillator 
+			<tone-oscillator
 				omni
-				component="oscillator" 
+				component="oscillator"
 				class="rack" collapsed label="Oscillator"></tone-oscillator>
-			<tone-filter 
+			<tone-filter
 				component="filter"
 				class="rack" collapsed label="Filter"></tone-filter>
-			<tone-frequency-envelope 
+			<tone-frequency-envelope
 				component="filterEnvelope"
-				collapsed 
+				collapsed
 				label="Filter Envelope"></tone-frequency-envelope>
 		`}});const G=[{frequency:300,envelope:{attack:.001,decay:.20958529411764706,sustain:0,release:.4888,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},harmonicity:17.075,modulationIndex:36.84,resonance:378.8235294117647,octaves:2.25},{frequency:200,envelope:{attack:.01,decay:.0427764705882353,sustain:0,release:.4888,attackCurve:"linear",decayCurve:"linear",releaseCurve:"exponential"},harmonicity:12,modulationIndex:21.04,resonance:106.19607843137256,octaves:4},{frequency:300,envelope:{attack:.09584313725490196,decay:.26265196078431374,sustain:0,release:.4888,attackCurve:"ripple",decayCurve:"exponential",releaseCurve:"exponential"},harmonicity:.5,modulationIndex:11.56,resonance:474.0882352941176,octaves:.99},{frequency:300,envelope:{attack:.001,decay:.4,sustain:0,release:.2,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},harmonicity:12,modulationIndex:20,resonance:800,octaves:1.5}];customElements.define("tone-metal-synth",class extends H{constructor(){super(),this.label="MetalSynth",this.presets=JSON.stringify(G)}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Harmonicity"
 				attribute="harmonicity"
 				min="0.5"
 				max="20"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Modulation Index"
 				attribute="modulationIndex"
 				min="0.5"
 				max="40"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Resonance"
 				attribute="resonance"
 				min="100"
 				max="8000"
 				exp="2"
 				value="4000"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Octaves"
 				attribute="octaves"
 				min="0.5"
 				max="4"
 				value="1.5"></tone-slider>
-			<tone-envelope 
-				component="envelope" 
-				collapsed 
+			<tone-envelope
+				component="envelope"
+				collapsed
 				label="Envelope"></tone-envelope>
 		`}});const U=[{pitchDecay:.0033411764705882354,octaves:.8300000000000001,oscillator:{frequency:440,detune:0,phase:0,type:"fmsine",modulationIndex:.1,modulationType:"sawtooth",harmonicity:.44,volume:0,mute:!1},envelope:{attack:6e-4,decay:.25,sustain:0,release:1.4,attackCurve:"exponential",decayCurve:"exponential",releaseCurve:"exponential"}},{pitchDecay:.008,octaves:2,oscillator:{type:"sine",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},envelope:{attack:6e-4,decay:.5,sustain:0,release:1.4,attackCurve:"exponential",decayCurve:"exponential",releaseCurve:"exponential"}},{pitchDecay:.019729411764705884,octaves:4.845,oscillator:{frequency:440,detune:0,phase:0,spread:80.4,count:3,type:"fatsine",partialCount:0,volume:0,mute:!1},envelope:{attack:.011560784313725491,decay:.22226666666666667,sustain:0,release:1.4,attackCurve:"sine",decayCurve:"exponential",releaseCurve:"exponential"}}];customElements.define("tone-membrane-synth",class extends H{constructor(){super(),this.label="MembraneSynth",this.presets=JSON.stringify(U)}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Pitch Decay"
 				attribute="pitchDecay"
 				min="0.001"
 				max="0.2"
 				exp="2"
 				value="0.01"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Octaves"
 				attribute="octaves"
 				min="0.5"
 				max="6"
 				value="1.5"></tone-slider>
-			<tone-oscillator 
+			<tone-oscillator
 				omni
-				component="oscillator" 
-				collapsed 
+				component="oscillator"
+				collapsed
 				label="Oscillator"></tone-oscillator>
-			<tone-envelope 
-				component="envelope" 
-				collapsed 
+			<tone-envelope
+				component="envelope"
+				collapsed
 				label="Envelope"></tone-envelope>
 		`}});customElements.define("tone-noise-synth",class extends H{constructor(){super(),this.label="NoiseSynth"}renderAttributes(){return i.b`
-			<tone-noise 
+			<tone-noise
 				label="Noise"
 				collapsed
 				component="noise"></tone-noise>
-			<tone-envelope 
-				component="envelope" 
-				collapsed 
+			<tone-envelope
+				component="envelope"
+				collapsed
 				label="Envelope"></tone-envelope>
 		`}});const W=[{harmonicity:1,modulationIndex:20.848,portamento:.024,oscillator:{type:"sawtooth9",frequency:440,detune:0,phase:0,partialCount:9},envelope:{attack:.012926470588235294,decay:.05975,sustain:.16,release:.18211764705882355,attackCurve:"exponential",decayCurve:"exponential",releaseCurve:"exponential"},modulation:{type:"custom",frequency:440,detune:0,phase:0,partials:[.8105694691387023,0,.0900632743487447,0,.03242277876554809,0,.016542234064055146,0,.010007030483193857,0,.00669892123255126,0,.004796269048158,0,.6,0,.0028047386475387615,.4727272727272728,.002245344789857901,0,.0018380260071172384,0,.0015322674274833694,0,.0012969111506219236,.8727272727272728,.0011118922759104286,0,.0009638162534348421,0,.0008434645880735718,0],partialCount:32},modulationEnvelope:{attack:.012926470588235294,decay:.08784411764705882,sustain:0,release:.08627941176470588,attackCurve:"exponential",decayCurve:"exponential",releaseCurve:"cosine"}},{harmonicity:1.515,modulationIndex:6.483999999999999,detune:0,oscillator:{type:"sawtooth3",frequency:440,detune:0,phase:0,partialCount:3,volume:0,mute:!1},envelope:{attack:.010585294117647059,decay:.27689411764705885,sustain:0,release:.7328941176470589,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},modulation:{type:"square",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},modulationEnvelope:{attack:.01,decay:.05975,sustain:0,release:.13635,attackCurve:"exponential",decayCurve:"exponential",releaseCurve:"exponential"},portamento:0},{harmonicity:1.655,modulationIndex:40,detune:0,oscillator:{type:"square",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},envelope:{attack:.09584313725490196,decay:.13174117647058822,sustain:.25,release:.5,attackCurve:"exponential",decayCurve:"exponential",releaseCurve:"exponential"},modulation:{type:"triangle",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},modulationEnvelope:{attack:.0427764705882353,decay:.8596519607843138,sustain:.08,release:3.392894117647059,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},portamento:.15899999999999997}];customElements.define("tone-fm-synth",class extends H{constructor(){super(),this.label="FMSynth",this.presets=JSON.stringify(W)}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Portamento"
 				attribute="portamento"
 				min="0"
 				max="0.3"
 				value="0"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Harmonicity"
 				attribute="harmonicity"
 				min="0.5"
 				max="4"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Modulation Index"
 				attribute="modulationIndex"
 				min="0.1"
 				max="40"
 				value="1"></tone-slider>
-			<tone-envelope 
+			<tone-envelope
 				component="envelope"
-				collapsed 
+				collapsed
 				label="Carrier Envelope"></tone-envelope>
-			<tone-oscillator 
+			<tone-oscillator
 				omni
 				component="oscillator"
 				collapsed label="Carrier Oscillator"></tone-oscillator>
-			<tone-envelope 
+			<tone-envelope
 				component="modulationEnvelope"
-				collapsed 
+				collapsed
 				label="Modulation Envelope"></tone-envelope>
-			<tone-oscillator 
+			<tone-oscillator
 				component="modulation"
 				collapsed label="Modulation Oscillator"></tone-oscillator>
 		`}});const Y=[{harmonicity:3.51,detune:0,oscillator:{type:"sawtooth",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},envelope:{attack:.01682843137254902,decay:.2,sustain:.3,release:.3,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},modulation:{type:"sine",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},modulationEnvelope:{attack:.6661147058823529,decay:1.1665411764705882,sustain:1,release:2.151691176470588,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},portamento:0},{harmonicity:2.88,detune:0,oscillator:{frequency:440,detune:0,phase:0,width:0,volume:0,mute:!1,type:"pulse"},envelope:{attack:.20958529411764706,decay:1.9219607843137254,sustain:.08,release:1.5132911764705883,attackCurve:"exponential",decayCurve:"linear",releaseCurve:"exponential"},modulation:{type:"square",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},modulationEnvelope:{attack:.01682843137254902,decay:1.1665411764705882,sustain:1,release:2.151691176470588,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},portamento:0},{harmonicity:2.355,detune:0,oscillator:{type:"sawtooth",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},envelope:{attack:.19729411764705884,decay:1.1072313725490197,sustain:.3,release:2.8358588235294118,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},modulation:{type:"triangle",frequency:440,detune:0,phase:0,partialCount:0,volume:0,mute:!1},modulationEnvelope:{attack:.09584313725490196,decay:1.1665411764705882,sustain:1,release:2.151691176470588,attackCurve:"linear",decayCurve:"exponential",releaseCurve:"exponential"},portamento:0}];customElements.define("tone-am-synth",class extends H{constructor(){super(),this.label="AMSynth",this.presets=JSON.stringify(Y)}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Portamento"
 				attribute="portamento"
 				min="0"
 				max="0.3"
 				value="0"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Harmonicity"
 				attribute="harmonicity"
 				min="0.5"
 				max="4"
 				value="1"></tone-slider>
-			<tone-envelope 
+			<tone-envelope
 				component="envelope"
-				collapsed 
+				collapsed
 				label="Carrier Envelope"></tone-envelope>
-			<tone-oscillator 
+			<tone-oscillator
 				omni
 				component="oscillator"
 				collapsed label="Carrier Oscillator"></tone-oscillator>
-			<tone-envelope 
+			<tone-envelope
 				component="modulationEnvelope"
-				collapsed 
+				collapsed
 				label="Modulation Envelope"></tone-envelope>
-			<tone-oscillator 
+			<tone-oscillator
 				component="modulation"
 				collapsed label="Modulation Oscillator"></tone-oscillator>
 		`}});customElements.define("tone-sampler",class extends H{constructor(){super(),this.label="Sampler"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Attack"
 				attribute="attack"
 				min="0"
 				max="0.3"
 				value="0"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Release"
 				attribute="release"
 				min="0"
 				max="1.5"
 				value="0.1"></tone-slider>
-			<tone-select-attribute 
+			<tone-select-attribute
 				attribute="curve"
 				label="Curve">
 				<option value="linear">linear</option>
 				<option value="exponential">exponential</option>
 				</tone-select-attribute>
 		`}});customElements.define("tone-duo-synth",class extends H{constructor(){super(),this.label="MembraneSynth"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Vibrato Rate"
 				attribute="vibratoRate"
 				min="0.1"
 				max="5"
 				units="hz"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Vibrato Amount"
 				attribute="vibratoAmount"
 				min="0"
 				max="1"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Harmonicity"
 				attribute="harmonicity"
 				min="0.5"
 				max="4"
 				value="1"></tone-slider>
-			<tone-mono-synth 
-				component="voice0" 
-				collapsed 
+			<tone-mono-synth
+				component="voice0"
+				collapsed
 				nopresets
 				label="Voice 0"></tone-mono-synth>
-			<tone-mono-synth 
-				component="voice1" 
-				collapsed 
+			<tone-mono-synth
+				component="voice1"
+				collapsed
 				nopresets
 				label="Voice 1"></tone-mono-synth>
 		`}});customElements.define("tone-filter-viz",class extends D.a{constructor(){super(),this.min=0,this.max=2.5,this.alt="filter response curve"}drawBackground(t,e,n){t.fillStyle="rgba(255, 255, 255, 0.3)",t.fillRect(0,.6*n,e,3),t.fill()}async visualize(t){this.buffer=t.getFrequencyResponse().map(t=>Math.pow(t,.5)),this.requestUpdate()}});customElements.define("tone-filter",class extends o.a{static get properties(){return{label:{type:String},frequency:{type:Boolean}}}constructor(){super(),this.label="Filter"}render(){return i.b`
@@ -2061,12 +2061,12 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					margin-top: 5px;
 				}
 			</style>
-			<tone-rack 
+			<tone-rack
 				@collapse=${t=>this.collapsed=t.detail}
 				?collapsed=${this.collapsed} label="${this.label}">
 				<tone-filter-viz class="viz" slot="top" id="top"></tone-filter-viz>
 				<tone-filter-viz class="viz" id="bottom" color="white"></tone-filter-viz>
-				<tone-select-attribute 
+				<tone-select-attribute
 					label="Type"
 					attribute="type">
 						<option value="lowpass">lowpass</option>
@@ -2078,7 +2078,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 						<option value="notch">notch</option>
 						<option value="allpass">allpass</option>
 				</tone-select-attribute>
-				<tone-select-attribute 
+				<tone-select-attribute
 					label="Rolloff"
 					attribute="rolloff">
 					<option value="-12">-12</option>
@@ -2121,7 +2121,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					width: 40px;
 					display: block;
 					margin: 0 auto;
-					position: relative;					
+					position: relative;
 				}
 				tone-slider {
 					position: absolute;
@@ -2147,7 +2147,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 			</style>
 			<div id="container">
 				<div id="slider-container">
-					<tone-slider 
+					<tone-slider
 						default="0"
 						attribute=${this.attribute}
 						max="6"
@@ -2256,7 +2256,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					attribute="pan">
 				</tone-slider>
 				<div id="buttons">
-					<button id="solo" aria-checked=${this.solo} 
+					<button id="solo" aria-checked=${this.solo}
 						@click=${t=>this.solo=!this.solo}
 						class=${this.solo?"enabled":""}>
 						solo</button>
@@ -2372,46 +2372,46 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					display: block;
 					margin-top: 10px;
 				}
-				
+
 			</style>
-			<tone-rack 
+			<tone-rack
 				@collapse=${t=>this.collapsed=t.detail}
 				?collapsed=${this.collapsed} label="${this.label}">
-				
-				<tone-slider 
+
+				<tone-slider
 					attribute="attack"
-					min="0.001" 
-					max="1" 
-					value="0.1" 
+					min="0.001"
+					max="1"
+					value="0.1"
 					label="Attack">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					attribute="release"
-					min="0.001" 
-					max="1" 
-					value="0.1" 
+					min="0.001"
+					max="1"
+					value="0.1"
 					label="Release">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					attribute="threshold"
-					min="-60" 
-					max="0" 
-					value="-12" 
+					min="-60"
+					max="0"
+					value="-12"
 					exp="0.5"
 					label="Threshold">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					attribute="ratio"
-					min="1" 
-					max="20" 
-					value="4" 
+					min="1"
+					max="20"
+					value="4"
 					label="Ratio">
 				</tone-slider>
-				<tone-slider 
+				<tone-slider
 					attribute="knee"
-					min="0" 
-					max="40" 
-					value="30" 
+					min="0"
+					max="40"
+					value="30"
 					label="Knee">
 				</tone-slider>
 			</tone-rack>
@@ -2477,7 +2477,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="container" ?focused=${this.focused} ?novolume=${this.novolume}>
-				<button 
+				<button
 					@blur=${t=>this.focused=!1}
 					@focus=${t=>this.focused=!0}
 					@click=${this._clicked.bind(this)}
@@ -2486,13 +2486,13 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				</button>
 
 				${this.novolume?i.b``:i.b`
-					<tone-slider 
+					<tone-slider
 						@blur=${t=>this.focused=!1}
 						@focus=${t=>this.focused=!0}
 						id="volume"
 						@change=${this._adjustVolume.bind(this)}
 						bare min="-60" max="0" value="0"></tone-slider>`}
-				
+
 			</div>
 		`}});customElements.define("tone-top-bar",class extends i.a{constructor(){super()}updated(){const t=this.shadowRoot.querySelector("canvas");t.width=2*t.clientWidth,t.width=2*t.clientHeight;const{width:e,height:n}=t,i=t.getContext("2d"),o=function(t){const e=new Array(t),n=new Array(t),i=new Array(t),o=new Array(t),r=[e,i,o,n];for(let n=0;n<t;n++)e[n]=Math.sin(2*Math.PI*n/t);for(let e=0;e<t;e++)i[e]=(e+t/2)%t/t*2-1;for(let e=0;e<t;e++)o[e]=e<t/3?e/(t/3)*2-1:e<2*t/3?2*(1-(e-t/3)/(t/3))-1:(e-2*t/3)/(t/3)*2-1;for(let e=0;e<t;e++){const i=t/16;n[e]=e<i?-1:e<t/2?1:e<t-i?-1:1}return r[Math.floor(Math.random()*r.length)]}(e+1);i.beginPath(),o.forEach((t,e)=>{const o=Math.scale(t,-1,1,.25*n,.75*n);0===e?i.moveTo(e,o):i.lineTo(e,o)}),i.lineTo(e,n),i.lineTo(0,n),i.fillStyle="#22DBC0",i.fill()}render(){return i.b`
 			<style>
@@ -2637,7 +2637,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="content" ?collapsed=${this.collapsed}>
-				<button 
+				<button
 					aria-label="expand"
 					aria-checked=${this.collapsed}
 					@click=${()=>this.collapsed=!this.collapsed}>
@@ -2739,9 +2739,9 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="container" class=${this.loaded?"loaded":""}>
-				<div id="loader" 
-					role="progressbar" 
-					aria-valuenow=${this.progress} 
+				<div id="loader"
+					role="progressbar"
+					aria-valuenow=${this.progress}
 					aria-valuemin="0" aria-valuemax="100">
 						<div id="bar" style="width: ${(100*this.progress).toString()}%"></div>
 				</div>
@@ -2839,7 +2839,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="container" ?collapsed=${this.collapsed}>
-				<button id="close" 
+				<button id="close"
 					@click=${()=>this.collapsed=!this.collapsed}
 					aria-label="close">${this.collapsed?tt:Z}</button>
 				<div id="content">
@@ -2865,7 +2865,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				}
 
 				#container {
-					position: absolute;
+					position: relative;
 					top: 0px;
 					left: 0px;
 					width: 100%;
@@ -2998,7 +2998,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 
 			</style>
 			<div id="container" ?running=${this.running}>
-				<button 
+				<button
 					@click=${this._clicked.bind(this)}
 					aria-label="Start">
 					${et}
@@ -3104,14 +3104,14 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				</canvas>
 			</div>
 		`}});class nt extends H{constructor(){super(),this.effect=!0}}customElements.define("tone-effect",nt);customElements.define("tone-chorus",class extends nt{constructor(){super(),this.label="Chorus"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Frequency"
 				attribute="frequency"
 				min="0.1"
 				max="4"
 				units="hz"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Delay Time"
 				attribute="delayTime"
 				min="0.1"
@@ -3119,14 +3119,14 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				max="20"
 				units="ms"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Spread"
 				attribute="spread"
 				min="0"
 				max="360"
 				units="deg"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Depth"
 				attribute="depth"
 				min="0"
@@ -3138,7 +3138,7 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				nocustom
 				></tone-oscillator-type>
 		`}});customElements.define("tone-chebyshev",class extends nt{constructor(){super(),this.label="Chebyshev"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Order"
 				attribute="order"
 				min="1"
@@ -3146,13 +3146,13 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				max="100"
 				value="1"></tone-slider>
 		`}});customElements.define("tone-freeverb",class extends nt{constructor(){super(),this.label="Freeverb"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Room Size"
 				attribute="roomSize"
 				min="0.1"
 				max="0.95"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Dampening"
 				attribute="dampening"
 				min="100"
@@ -3161,21 +3161,21 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				units="hz"
 				value="2000"></tone-slider>
 		`}});customElements.define("tone-tremolo",class extends nt{constructor(){super(),this.label="Tremolo"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Frequency"
 				attribute="frequency"
 				min="0.1"
 				max="20"
 				units="hz"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Spread"
 				attribute="spread"
 				min="0"
 				max="360"
 				units="deg"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Depth"
 				attribute="depth"
 				min="0"
@@ -3187,27 +3187,27 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				nocustom
 				></tone-oscillator-type>
 		`}});customElements.define("tone-auto-filter",class extends nt{constructor(){super(),this.label="AutoFilter"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Frequency"
 				attribute="frequency"
 				min="0.1"
 				max="20"
 				units="hz"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Base Frequency"
 				attribute="baseFrequency"
 				min="20"
 				max="4000"
 				units="hz"
 				value="200"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Octaves"
 				attribute="octaves"
 				min="0.5"
 				max="5"
 				value="2.5"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Depth"
 				attribute="depth"
 				min="0"
@@ -3222,14 +3222,14 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				component="filter"
 				label="Filter"></tone-filter>
 		`}});customElements.define("tone-auto-panner",class extends nt{constructor(){super(),this.label="AutoPanner"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Frequency"
 				attribute="frequency"
 				min="0.1"
 				max="20"
 				units="hz"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Depth"
 				attribute="depth"
 				min="0"
@@ -3240,13 +3240,13 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 				label="Type"
 				nocustom></tone-oscillator-type>
 		`}});customElements.define("tone-ping-pong-delay",class extends nt{constructor(){super(),this.label="PingPongDelay"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Delay Time"
 				attribute="delayTime"
 				min="0.01"
 				max="1"
 				value="0.25"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Feedback"
 				attribute="feedback"
 				min="0"
@@ -3257,20 +3257,20 @@ function g(t){return"slot"===t.localName}class y{static getFlattenedNodes(t){ret
 					<div style="position: absolute; top: 2px; left: 110px; color: var(--color-dark-gray);"
 						id="#generating">Generating...</div>
 				`:i.b``}
-			<tone-slider 
+			<tone-slider
 				label="Decay"
 				attribute="decay"
 				min="0.1"
 				max="4"
 				value="1"></tone-slider>
-			<tone-slider 
+			<tone-slider
 				label="Predelay"
 				attribute="preDelay"
 				min="0.001"
 				max="0.1"
 				value="0"></tone-slider>
 		`}});customElements.define("tone-distortion",class extends nt{constructor(){super(),this.label="Distortion"}renderAttributes(){return i.b`
-			<tone-slider 
+			<tone-slider
 				label="Distortion"
 				attribute="distortion"
 				min="0"

@@ -5,10 +5,7 @@
     height: 200px;
     border: 5px solid #CCC;
     border-radius: 10px;
-<<<<<<< HEAD
-    display: block;
-=======
->>>>>>> 56c34a37a45a26d04f1adeb4d8284f6a2413dd81
+
   }
 
   .ball {
@@ -22,7 +19,6 @@
   }
 </style>
 
-<<<<<<< HEAD
 
 <head>
   <script src='tone.js'></script>
@@ -64,27 +60,6 @@
 
 	<script type="text/javascript">
 
-  function handleOrientation(event) {
-    var x = event.beta;  // In degree in the range [-180,180]
-    var y = event.gamma; // In degree in the range [-90,90]
-
-
-    // Because we don't want to have the device upside down
-    // We constrain the x value to the range [-90,90]
-    if (x >  90) { x =  90};
-    if (x < -90) { x = -90};
-
-    // To make computation easier we shift the range of
-    // x and y to [0,180]
-    x += 90;
-    y += 90;
-
-    // 10 is half the size of the ball
-    // It center the positioning point to the center of the ball
-
-  }
-
-  window.addEventListener('deviceorientation', handleOrientation);
 		var oscillators = [];
 
 		var bassFreq = 32;
@@ -159,7 +134,7 @@
 
   }
 }
-  var rect = element.getBoundingClientRect();
+  // var rect = element.getBoundingClientRect();
 
 		// document.querySelector(".ball").addEventListener("change", e => {
     //   console.log("yo");
@@ -171,21 +146,12 @@
 
 
 
-=======
-<div class="garden">
-  <div class="ball"></div>
-</div>
+    var ball   = document.querySelector('.ball');
+    var garden = document.querySelector('.garden');
+    var output = document.querySelector('.output');
 
-<pre class="output"></pre>
-
-<script type="text/javascript">
->>>>>>> 56c34a37a45a26d04f1adeb4d8284f6a2413dd81
-  var ball   = document.querySelector('.ball');
-  var garden = document.querySelector('.garden');
-  var output = document.querySelector('.output');
-
-  var maxX = garden.clientWidth  - ball.clientWidth;
-  var maxY = garden.clientHeight - ball.clientHeight;
+    var maxX = garden.clientWidth  - ball.clientWidth;
+    var maxY = garden.clientHeight - ball.clientHeight;
 
   function handleOrientation(event) {
     var x = event.beta;  // In degree in the range [-180,180]
@@ -199,12 +165,8 @@
     if (x >  90) { x =  90};
     if (x < -90) { x = -90};
 
-<<<<<<< HEAD
     // To make computation easier we shift the range of
-=======
-    // To make computation easier we shift the range of 
->>>>>>> 56c34a37a45a26d04f1adeb4d8284f6a2413dd81
-    // x and y to [0,180]
+    // x and y toss [0,180]
     x += 90;
     y += 90;
 
@@ -212,7 +174,6 @@
     // It center the positioning point to the center of the ball
     ball.style.top  = (maxX*x/180 - 10) + "px";
     ball.style.left = (maxY*y/180 - 10) + "px";
-<<<<<<< HEAD
     oscillators.forEach((osc, i) => {
       osc.frequency.rampTo(maxY*y/180 - 10);
     });
@@ -222,10 +183,3 @@
   window.addEventListener('deviceorientation', handleOrientation);
 </script>
 </body>
-=======
-  }
-
-  window.addEventListener('deviceorientation', handleOrientation);
-</script>
-
->>>>>>> 56c34a37a45a26d04f1adeb4d8284f6a2413dd81
