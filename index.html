@@ -95,6 +95,12 @@
     });
     data = maxY*y/180 - 10;
 
+  }
+
+  window.addEventListener('deviceorientation', handleOrientation);
+
+  function sendInput(){
+
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/input', true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -107,9 +113,8 @@
     xhr.send("x=" + data);
 
     console.log("Sent request");
-
   }
 
-  window.addEventListener('deviceorientation', handleOrientation);
+  let intervalID = window.setInterval(sendInput, 500);
 
 </script>
