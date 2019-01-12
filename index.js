@@ -5,9 +5,6 @@ const path = require('path');
 let x;
 
 http.createServer(function (request, response) {
-    response.writeHead(200, {'Content-Length': 1000,'Content-Type':'text/plain'});
-    response.write("Hello");
-    response.end();
     if (request.url == "/input"){
         let body = '';
         request.on('data', chunk => {
@@ -21,8 +18,8 @@ http.createServer(function (request, response) {
         });
     }
     else if (request.url == "/output"){
-        response.writeHead(200, {'Content-Type':'text/plain'});
-        response.write("Hello");
+        response.writeHead(200, {'Content-Type':'application/json'});
+        response.write(JSON.stringify({output: "Hello"}));
         response.end();
     }
     else {

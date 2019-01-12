@@ -1,0 +1,56 @@
+<button id="btn">click me</button>
+<script src='tone.js'></script>
+<script src='tonejs-ui.js'></script>
+
+<script type="text/javascript">
+
+  var data;
+
+  var oscillators = [];
+
+    var bassFreq = 32;
+
+    for (var i = 0; i < 8; i++){
+      oscillators.push(new Tone.Oscillator({
+        "frequency" : bassFreq * i,
+        "type" : "sawtooth10",
+        "volume" : -Infinity,
+        "detune" : Math.random() * 30 - 15,
+      }).toMaster());
+    }
+
+    //bind the interface
+    document.querySelector("#btn").addEventListener("click", e => {
+      oscillators.forEach(o => {
+        if (e.detail){
+          o.start();
+          o.volume.rampTo(0, 1);
+        } else {
+          o.stop("+1.2");
+          o.volume.rampTo(-Infinity, 1);
+        }
+      });
+    });
+
+
+  function getInput(data){
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/output', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            let info  = JSON.parse(xhr.responseText);
+            console.log(info);
+        }
+    };
+
+    xhr.send();
+
+    // oscillators.forEach((osc, i) => {
+    //   osc.frequency.rampTo(maxY*y/180 - 10);
+    // });
+  }
+
+  let intervalID = window.setInterval(getInput, 500);
+
+</script>
