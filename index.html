@@ -36,6 +36,8 @@
   var maxX = garden.clientWidth  - ball.clientWidth;
   var maxY = garden.clientHeight - ball.clientHeight;
 
+  var data;
+
   var oscillators = [];
 
 		var bassFreq = 32;
@@ -87,12 +89,13 @@
     oscillators.forEach((osc, i) => {
       osc.frequency.rampTo(maxY*y/180 - 10);
     });
+    data = maxY*y/180 - 10;
 
   }
 
   window.addEventListener('deviceorientation', handleOrientation);
 
-  function sendInput(){
+  function sendInput(data){
 
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/input', true);
@@ -102,7 +105,8 @@
             let info  = JSON.parse(xhr.responseText);
         }
     };
-    xhr.send("x=Hello");
+
+    xhr.send("x=" + data);
 
     console.log("Sent request");
   }
