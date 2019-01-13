@@ -6,25 +6,106 @@
 
   var data;
 
-  var oscillators = [];
+  var inputsX = [];
+  var inputsY = [];
 
-  var inputs = [];
+    // var bassFreq = 32;
 
-    var bassFreq = 32;
+    // for (var i = 0; i < 8; i++){
+    //   oscillators.push(new Tone.Oscillator({
+    //     "frequency" : bassFreq * i,
+    //     "type" : "sawtooth10",
+    //     "volume" : -Infinity,
+    //     "detune" : Math.random() * 30 - 15,
+    //   }).toMaster());
+    // }
 
-    for (var i = 0; i < 8; i++){
-      oscillators.push(new Tone.Oscillator({
-        "frequency" : bassFreq * i,
-        "type" : "sawtooth10",
+    function majorThird(frequency, isMinor = 0) {
+    var stepRatio = Math.pow(2, (4/12));
+    if (isMinor == 1){
+      stepRatio = Math.pow(2,(3/12));
+    }
+    console.log(frequency, " " ,frequency*stepRatio)
+    return frequency*stepRatio;
+  }
+
+  /*
+  function minorThird(frequency) {
+    var stepRatio = Math.pow(2, (3/12));
+    return frequency*stepRatio;
+  }
+  */
+
+  function majorFifth(frequency) {
+    var stepRatio = Math.pow(2, (7/12));
+    return frequency*stepRatio;
+  }
+
+
+  function majorSeventh(frequency) {
+    var stepRatio = Math.pow(2, (11/12));
+    return frequency*stepRatio;
+  }
+
+    function createOscil(frequency, phase, distortion= 0) {
+      var oscil = new Tone.Oscillator({
+        "frequency" : frequency,
+        //"phase" : 45,
+        "type" : "sine",
         "volume" : -Infinity,
         "detune" : Math.random() * 30 - 15,
-      }).toMaster());
+      }).toMaster();
+      var verb = new Tone.Reverb({
+        "decay": 3,
+        "preDelay" : 1,
+      }).toMaster();
+      var distortion = new Tone.Distortion(distortion).toMaster();
+      oscil.connect(distortion)
+      oscil.connect(verb);
+      return oscil;
+    }
+    
+
+    var oscillators = [];
+
+    var bassFreq = 120.00;
+
+    var basePhase = 90;
+
+    var bassDecay = 3;
+
+    var bassPreDelay = 0.75
+
+    var baseDistortion = 0
+
+    initializeOscilators(oscillators, 1);
+
+
+    function initializeOscilators(oscillators, multiplier) {
+      /*
+      var tones = [bassFreq, majorThird(bassFreq), majorFifth(bassFreq),majorSeventh(bassFreq)];
+      for(i=0; i<tones.length; i++) {
+        oscillators.push(tones[i]);
+        oscillators.push(tones[i]*2);
+      }
+      */
+
+      oscillators.push(createOscil(bassFreq*multiplier, basePhase));
+      oscillators.push(createOscil(majorThird(bassFreq)*multiplier,basePhase));
+      oscillators.push(createOscil(majorFifth(bassFreq)*multiplier,basePhase));
+      oscillators.push(createOscil(majorSeventh(bassFreq)*multiplier,basePhase));
+
+      oscillators.push(createOscil(bassFreq*multiplier*2,basePhase));
+      oscillators.push(createOscil(majorThird(bassFreq)*multiplier*2,basePhase));
+      oscillators.push(createOscil(majorFifth(bassFreq)*multiplier*2,basePhase));
+      oscillators.push(createOscil(majorSeventh(bassFreq)*multiplier*2,basePhase));
+
     }
 
     //bind the interface
     document.querySelector("#btn").addEventListener("click", e => {
       oscillators.forEach(o => {
-        if (e.detail){
+        if (x){
           o.start();
           o.volume.rampTo(0, 1);
         } else {
@@ -33,6 +114,33 @@
         }
       });
     });
+
+    function changeSound(x, y){
+      oscillators.forEach((osc, i) => {
+        var isMinor = Math.ceil(x*100)%2;
+        isMinor = 0;
+        if (x*100 >= 150){
+          isMinor = 1;
+        }
+        isMinor = 0
+        //console.log("ceil", Math.ceil(x));
+        console.log(isMinor);
+        if (i%3==0) {
+          osc.frequency.rampTo(bassFreq * x, 0.4);
+        }
+        else if (i%4 == 1) {
+          osc.frequency.rampTo(majorThird(bassFreq*x, isMinor), 0.4); 
+        }
+        else if (i%4 == 3) {
+          osc.frequency.rampTo(majorFifth(bassFreq*x), 0.4);
+        }
+        else {
+          osc.frequency.rampTo(majorSeventh(bassFreq*x), 0.4);
+        }
+        osc.distortion.rampTo(y)
+        
+      });
+    }
 
 
   function getInput(data){
@@ -43,16 +151,19 @@
         if (xhr.status === 200) {
             let info  = JSON.parse(xhr.responseText);
             console.log(info);
-            // info = parseFloat(info.output.slice(2));
-            // console.log(info);
-            // inputs.push(info);
-            // if (inputs.length == 6){
-            //   let avg = arrayAverage(inputs);
-            //   oscillators.forEach((osc, i) => {
-            //     osc.frequency.rampTo(avg);
-            //   })
-            //   inputs = [];
-            // }
+            info = info.output.slice(2).split(',');
+            console.log(info);
+            info = info.map(str => parseFloat(str));
+            console.log(info);
+            inputsX.push(info[0]);
+            inputsY.push(info[1]);
+            if (inputsX.length >= 6 && inputsY.length >= 6){
+              let avgX = arrayAverage(inputsX);
+              let avgY = arrayAverage(inputsY);
+              changeSound(avgX, avgY);
+              inputsX = [];
+              inputsY = [];
+            }
         }
     };
 
