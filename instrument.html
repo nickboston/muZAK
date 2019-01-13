@@ -25,7 +25,7 @@
     if (isMinor == 1){
       stepRatio = Math.pow(2,(3/12));
     }
-    console.log(frequency, " " ,frequency*stepRatio)
+    // console.log(frequency, " " ,frequency*stepRatio)
     return frequency*stepRatio;
   }
 
@@ -39,6 +39,15 @@
   function majorFifth(frequency) {
     var stepRatio = Math.pow(2, (7/12));
     return frequency*stepRatio;
+  }
+
+  function axialBias(x,y) {
+    x, y = Math.abs(x), Math.abs(y);
+    var bias = Math.pow(2,x) - Math.pow(2,y/100);
+    console.log("x =====> ", x)
+    console.log("y =====> ", y/100)
+    console.log("bias =====>", bias);
+    return Math.abs(bias);
   }
 
 
@@ -105,7 +114,7 @@
     //bind the interface
     document.querySelector("#btn").addEventListener("click", e => {
       oscillators.forEach(o => {
-        if (x){
+        if (e.detail){
           o.start();
           o.volume.rampTo(0, 1);
         } else {
@@ -116,6 +125,10 @@
     });
 
     function changeSound(x, y){
+      // console.log("This is x", x);
+      x = x/100;
+      // console.log("This is x/100", x);
+      // console.log("This is bassFreq * x", bassFreq * x);
       oscillators.forEach((osc, i) => {
         var isMinor = Math.ceil(x*100)%2;
         isMinor = 0;
@@ -124,7 +137,7 @@
         }
         isMinor = 0
         //console.log("ceil", Math.ceil(x));
-        console.log(isMinor);
+        // console.log(isMinor);
         if (i%3==0) {
           osc.frequency.rampTo(bassFreq * x, 0.4);
         }
@@ -137,8 +150,8 @@
         else {
           osc.frequency.rampTo(majorSeventh(bassFreq*x), 0.4);
         }
-        osc.distortion.rampTo(y)
-        
+        osc.volume.rampTo(axialBias(x, y))
+        console.log("axialBias ===>", axialBias(x,y));
       });
     }
 
@@ -150,11 +163,11 @@
     xhr.onload = function() {
         if (xhr.status === 200) {
             let info  = JSON.parse(xhr.responseText);
-            console.log(info);
+            // console.log(info);
             info = info.output.slice(2).split(',');
-            console.log(info);
+            // console.log(info);
             info = info.map(str => parseFloat(str));
-            console.log(info);
+            // console.log(info);
             inputsX.push(info[0]);
             inputsY.push(info[1]);
             if (inputsX.length >= 6 && inputsY.length >= 6){
@@ -174,7 +187,7 @@
     // });
   }
 
-  let intervalID = window.setInterval(getInput, 500);
+  let intervalID = window.setInterval(getInput, 200);
 
   function arrayAverage(arr){
     let sum = 0;
